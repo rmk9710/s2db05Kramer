@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+button(type="button", class="btn btn-secondary")Left
+<button onclick="moreClaps()">Click me</button>
+<div id = target>Clap for me</div>
+<script> 
+var clap_count = 0
+moreClaps() {
+  clap_count = clap_count + 2 
+  div.textcontent = "Clap" clap_count "times"
+}
+</script>
