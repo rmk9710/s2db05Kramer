@@ -3,8 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-import index.pug from "views";
+var Energy = require("JoulsNeeded/JoulsProvided/location");
   
 const index = () => {
   return (
@@ -20,6 +19,13 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const connectionString =  
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,3 +57,55 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// We can seed the collection if needed on
+s2db05kramer start
+async function recreateDB(){
+ // Delete everything
+ await Energy.deleteMany();
+ let instance1 = new
+Energy({energy_type:"Jouls_Needed", size:'large',
+cost:25.4});
+ instance1.save( function(err,doc) {
+ if(err) return console.error(err);
+ console.log("First object saved")
+ });
+}
+let reseed = true;
+if (reseed) { recreateDB();}
+s2db05kramer start
+async function recreateDB(){
+ // Delete everything
+ await Energy.deleteMany();
+ let instance1 = new
+Energy({energy_type:"Jouls_Provided", size:'large',
+cost:25.4});
+ instance1.save( function(err,doc) {
+ if(err) return console.error(err);
+ console.log("First object saved")
+ });
+}
+let reseed = true;
+if (reseed) { recreateDB();}
+s2db05kramer start
+async function recreateDB(){
+ // Delete everything
+ await Energy.deleteMany();
+ let instance1 = new
+Energy({energy_type:"location", size:'large',
+cost:25.4});
+ instance1.save( function(err,doc) {
+ if(err) return console.error(err);
+ console.log("First object saved")
+ });
+}
+let reseed = true;
+if (reseed) { recreateDB();}
+
+function Energyrouter() {
+  let div = document.createElement('div');
+  let link = document.createElement('a');
+  link.href = '#/resource';
+  link.innerText = 'resource';
+};
+app.use("./resource");
