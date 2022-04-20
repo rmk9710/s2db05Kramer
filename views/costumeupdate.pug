@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+
+// Handle building the view for updating a energy.
+// query provides the id
+exports.Energy_update_Page = async function(req, res) {
+ console.log("update view for item "+req.query.id)
+ try{
+ let result = await energy.findById(req.query.id)
+ res.render('energyupdate', { title: 'Energy Update', toShow: result });
+ }
+ catch(err){
+ res.status(500)
+ res.send(`{'error': '${err}'}`);
+ }
+};

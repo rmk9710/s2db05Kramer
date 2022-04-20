@@ -49,3 +49,15 @@ ${JSON.stringify(req.body)}`)
 failed`);
  }
 };
+// Handle Energy delete on DELETE.
+exports.energy_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Energy.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };

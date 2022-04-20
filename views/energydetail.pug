@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+
+extends layout
+block content
+ h1= title
+ - let energyid = toShow._id
+ - let energy_type = toShow.energy_type
+ - let energycost = toShow.cost
+ - let energysize = toShow.size
+ div
+ div.row
+ div(class='costumeAttr mr-3') Energy ID is:
+ div #{energyid}
+ div.row
+ div(class='costumeAttr mr-3') Energy Type is:
+ div #{energy_type}
+ div.row
+ div(class='costumeAttr mr-3') Energy Size is:
+ div #{energysize}
+ div.row
+ div(class='costumeAttr mr-3') Energy Cost is:
+ div #{energycost}

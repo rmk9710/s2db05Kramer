@@ -14,3 +14,17 @@ moreClaps() {
 }
 let items = results
 </script>
+/* GET detail costume page */
+router.get('/detail', energy_controlers.energy_view_one_Page);
+// Handle a show one view with id specified by query
+exports.energy_view_one_Page = async function(req, res) {
+ console.log("single view for id " + req.query.id)
+ try{
+ result = await Energy.findById( req.query.id)
+ res.render('costumedetail',
+{ title: 'Energy Detail', toShow: result });
+ }
+ catch(err){
+ res.status(500)
+ res.send(`{'error': '${err}'}`);
+ }
