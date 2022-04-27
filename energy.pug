@@ -3,6 +3,8 @@ extends layout
 block content
   h1= title
 String[] results (joules_produced, joules_needed, location)
+joules_produced.max() = 10
+joules_produced.min() = 5
 <div class=container-fluid>joules_produced</div>
 <div class=row>joules_needed</div>
 

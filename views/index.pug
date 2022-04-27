@@ -1,30 +1,13 @@
 extends layout
 
+extends layout
 block content
-  h1= title
-  p Welcome to #{title}
-button(type="button", class="btn btn-secondary")Left
-<button onclick="moreClaps()">Click me</button>
-<div id = target>Clap for me</div>
-<script> 
-var clap_count = 0
-moreClaps() {
-  clap_count = clap_count + 2 
-  div.textcontent = "Clap" clap_count "times"
-}
-let items = results
-</script>
-/* GET detail costume page */
-router.get('/detail', energy_controlers.energy_view_one_Page);
-// Handle a show one view with id specified by query
-exports.energy_view_one_Page = async function(req, res) {
- console.log("single view for id " + req.query.id)
- try{
- result = await Energy.findById( req.query.id)
- res.render('costumedetail',
-{ title: 'Energy Detail', toShow: result });
- }
- catch(err){
- res.status(500)
- res.send(`{'error': '${err}'}`);
- }
+ if (!user)
+ a(href="/login") Login
+ br
+ a(href="/register") Register
+ if (user)
+ p You are currently logged in as #{user.username}
+ a(href="/costumes") Take me to Energy
+ br
+ a(href="/logout") Logout
